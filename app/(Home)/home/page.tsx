@@ -1,11 +1,16 @@
 import Intro from '@/components/Intro'
-import { EncryptedText } from '@/components/ui/encrypted-text'
-import React from 'react'
+import ProjectSummary from '@/components/project-summary'
 
 const Page = () => {
     return (
         <div className='flex flex-col h-full items-center justify-center overflow-x-hidden'>
             <Intro />
+            <ProjectSummary
+                title='Rheoma'
+                description='workflow automation'
+                screenshot='/screenshot.jpg'
+                slug='rheoma'
+            />
         </div>
     )
 }

@@ -31,7 +31,11 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "types/**/*.d.ts",
-    "components/transition.jsx"
+    "components/transition.jsx",
+    "components/model.jsx",
+    "components/model.jsx",
+    "components/device.jsx",
+    "components/MacbookModel.jsx"
   ],
   "exclude": ["node_modules"]
 }

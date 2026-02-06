@@ -26,10 +26,15 @@ export default function Intro() {
             <DisplacementSphere />
             <div
                 className="
-          max-w-5xl
-          px-6 md:px-20
-          text-center md:text-left self-start z-20
-        "
+    max-w-5xl
+    px-6 md:px-20
+    min-h-screen
+    flex
+    flex-col
+    justify-center self-start
+    text-center md:text-left
+    z-20
+  "
             >
                 <EncryptedText
                     text="SHREYAS MOHANTY"
@@ -68,6 +73,7 @@ export default function Intro() {
                     </span>
                 </h1>
             </div>
+
         </>
     );
 }
