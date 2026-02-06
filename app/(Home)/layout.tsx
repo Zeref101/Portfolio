@@ -39,7 +39,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="flex h-screen w-full">
             <Sidebar>
-                <SidebarBody className="dark:bg-background">
+                <SidebarBody className="dark:bg-background z-20 ">
                     <div className="flex flex-col gap-2 justify-start self-start mt-10 ml-10">
                         <Image src={"/no-bg-logo.png"} width={60} height={60} alt="logo" />
                         {links.map((link) => (

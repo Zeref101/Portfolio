@@ -131,7 +131,7 @@ export const Highlight = ({
         `
         relative inline-block
         rounded-lg
-        bg-gradient-to-r
+        bg-linear-to-r
         from-[#00eeff] to-[#00eeff]
         px-2 pb-1
         text-white
