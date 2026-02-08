@@ -7,10 +7,13 @@ function HindiDecorativeText() {
     return (
         <div
             className="
+        hidden
+        md:block
         absolute
         top-1/2
-        -right-[40px]
+        right-[23%]
         -translate-y-1/2
+        translate-x-1/2
         rotate-90
         text-white
         opacity-90
@@ -18,17 +21,27 @@ function HindiDecorativeText() {
         select-none
       "
         >
-            <span className=" text-9xl font-bold tracking-widest">
+            <span
+                className="
+          font-bold
+          tracking-widest
+          text-5xl
+          md:text-6xl
+          lg:text-7xl
+          xl:text-8xl
+        "
+            >
                 नमस्ते
             </span>
         </div>
     );
 }
 
+
 const AboutMe = () => {
     return (
         <section id='details' className="relative w-full py-32">
-            <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
                 {/* LEFT CONTENT */}
                 <div>
@@ -66,9 +79,8 @@ const AboutMe = () => {
                         height={600}
                     />
 
-                    {/* DECORATIVE HINDI TEXT */}
-                    <HindiDecorativeText />
                 </div>
+                <HindiDecorativeText />
             </div>
         </section>
 
