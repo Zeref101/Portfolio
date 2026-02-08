@@ -16,9 +16,13 @@ import {
   WebGLRenderer,
 } from "three";
 import { useWindowSize } from "@/hooks/useWindowSize";
+const vertexShader = await fetch(
+  "/shaders/displacement-sphere-vertex.glsl"
+).then((r) => r.text());
 
-import fragmentShader from "./displacement-sphere-fragment.glsl";
-import vertexShader from "./displacement-sphere-vertex.glsl";
+const fragmentShader = await fetch(
+  "/shaders/displacement-sphere-fragment.glsl"
+).then((r) => r.text());
 
 const springConfig = {
   stiffness: 30,

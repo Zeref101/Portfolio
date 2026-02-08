@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {},
+
   async redirects() {
     return [
       {
@@ -18,14 +20,6 @@ const nextConfig: NextConfig = {
         hostname: "cdn.simpleicons.org",
       },
     ],
-  },
-
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.glsl$/,
-      type: "asset/source",
-    });
-    return config;
   },
 };
 
