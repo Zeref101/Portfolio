@@ -2,12 +2,11 @@
   "compilerOptions": {
     "target": "ES2017",
     "moduleResolution": "bundler",
-    "types": ["three"],
     "skipLibCheck": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "strict": true,
-    "noEmit": true,
+    "noてEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "resolveJsonModule": true,
@@ -32,7 +31,6 @@
     "**/*.mts",
     "types/**/*.d.ts",
     "components/transition.jsx",
-    "components/model.jsx",
     "components/model.jsx",
     "components/device.jsx",
     "components/MacbookModel.jsx"
