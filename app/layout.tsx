@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/sonner";
 
 const myFont = localFont({
   src: [
@@ -53,6 +54,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${jpFont.variable} ${geistMono.variable} ${myFont.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

@@ -1,16 +1,13 @@
+import AboutMe from '@/components/about-me'
 import Intro from '@/components/Intro'
-import ProjectSummary from '@/components/project-summary'
+import Projects from '@/components/projects'
 
 const Page = () => {
     return (
         <div className='flex flex-col h-full items-center justify-center overflow-x-hidden'>
             <Intro />
-            <ProjectSummary
-                title='Rheoma'
-                description='workflow automation'
-                screenshot='/screenshot.jpg'
-                slug='rheoma'
-            />
+            <Projects />
+            <AboutMe />
         </div>
     )
 }

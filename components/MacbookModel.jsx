@@ -2,11 +2,12 @@
 
 import { useGLTF, useTexture, Center } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 export default function MacbookModel({ screenshot }) {
-  const { scene } = useGLTF("/models/macbook-pro.glb");
+  const gltf = useGLTF("/models/macbook-pro.glb");
+  const scene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
   const texture = useTexture(screenshot);
 
   const group = useRef(null);
@@ -25,7 +26,7 @@ export default function MacbookModel({ screenshot }) {
     });
     const screenMaterial = new THREE.MeshStandardMaterial({
       map: texture,
-      emissive: new THREE.Color("#000"),
+      // emissive: new THREE.Color("#ffffff"),
       emissiveIntensity: 0.6,
       metalness: 0,
       roughness: 0.9, // 🔑 kills glass look

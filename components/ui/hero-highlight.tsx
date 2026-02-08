@@ -1,7 +1,17 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "motion/react";
+import Image from "next/image";
 import React from "react";
+
+type ImageHighlightRevealProps = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+};
+
 
 export const HeroHighlight = ({
   children,
@@ -143,3 +153,65 @@ export const Highlight = ({
     </motion.span>
   );
 };
+
+export function ImageHighlightReveal({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: ImageHighlightRevealProps) {
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-lg",
+        className
+      )}
+      style={{ width, height }}
+    >
+      {/* IMAGE */}
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="absolute inset-0 object-cover"
+      />
+
+      {/* DARK OVERLAY (masked away) */}
+      <motion.div
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        animate={{ clipPath: "inset(0 0% 0 0)" }}
+        transition={{
+          duration: 1.2,
+          ease: [0.4, 0, 0.2, 1],
+        }}
+        className="absolute inset-0 bg-black/60"
+      />
+
+      {/* HIGHLIGHT SWEEP */}
+      <motion.div
+        initial={{ x: "-120%" }}
+        animate={{ x: "120%" }}
+        transition={{
+          duration: 1.2,
+          delay: 0.1,
+          ease: [0.4, 0, 0.2, 1],
+        }}
+        className="
+          pointer-events-none
+          absolute inset-y-0
+          w-[18%]
+          bg-gradient-to-r
+          from-transparent
+          via-cyan-300/60
+          to-transparent
+          blur-lg
+        "
+        style={{
+          mixBlendMode: "screen",
+        }}
+      />
+    </div>
+  );
+}

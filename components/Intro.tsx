@@ -1,14 +1,17 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
-import { EncryptedText } from '@/components/ui/encrypted-text';
-import { AnimatePresence } from 'motion/react';
-import { DisplacementSphere } from '@/components/Displacement-sphere/Displacement-sphere';
+import { useEffect, useState } from "react";
+import { Highlight } from "@/components/ui/hero-highlight";
+import { EncryptedText } from "@/components/ui/encrypted-text";
+import { AnimatePresence } from "motion/react";
+import { DisplacementSphere } from "@/components/Displacement-sphere/Displacement-sphere";
+import { FlipWords } from "./ui/flip-words";
 
 const roles = ["Curious Mind", "Explorer", "Question Asker"];
 
 export default function Intro() {
+    const [showSphere, setShowSphere] = useState(false);
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -18,12 +21,19 @@ export default function Intro() {
 
         return () => clearInterval(interval);
     }, []);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowSphere(true);
+        }, 1400);
 
-    const currentRole = roles[currentIndex];
+        return () => clearTimeout(timer);
+    }, []);
+
 
     return (
         <>
-            <DisplacementSphere />
+            {showSphere && <DisplacementSphere />}
+
             <div
                 className="
     max-w-5xl
@@ -37,6 +47,7 @@ export default function Intro() {
   "
             >
                 <EncryptedText
+                    revealDelayMs={80}
                     text="SHREYAS MOHANTY"
                     className="
             mb-6
@@ -60,20 +71,14 @@ export default function Intro() {
                 >
                     Engineer
                     <br />
-
                     <span className="inline-flex items-center gap-4">
                         <span className="text-white/40 font-light">+</span>
 
-                        <AnimatePresence mode="wait">
-                            <Highlight key={currentRole}>
-                                {currentRole}
-                            </Highlight>
-                        </AnimatePresence>
+                        <FlipWords words={roles} duration={1000} />
 
                     </span>
                 </h1>
             </div>
-
         </>
     );
 }
