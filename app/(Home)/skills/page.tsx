@@ -1,3 +1,4 @@
+import { EncryptedText } from '@/components/ui/encrypted-text';
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 import Image from 'next/image';
 import React from 'react'
@@ -96,9 +97,7 @@ const page = () => {
             <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
                 <div className="mb-20 max-w-3xl">
-                    <h2 className="text-4xl font-semibold text-white mb-4">
-                        Skills & Technologies
-                    </h2>
+                    <EncryptedText text='Skills & Technologies' className="text-4xl font-semibold text-white mb-4" />
                     <p className="text-lg text-white/70 leading-relaxed">
                         A structured overview of the tools, technologies, and system design
                         concepts I use to build reliable, scalable software.
