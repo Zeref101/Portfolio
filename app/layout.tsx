@@ -39,10 +39,72 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shreyas-mohanty-portfolio.vercel.app"),
+
   title: {
-    default: "Shreyas Mohanty – Portfolio",
+    default: "Shreyas Mohanty – Software Engineer",
     template: "%s | Shreyas Mohanty",
-  }
+  },
+
+  description:
+    "Software Engineer specializing in full-stack development with Next.js, React, TypeScript, and Node.js. Experience building scalable systems, real-time applications, and workflow automation platforms.",
+
+  keywords: [
+    "Shreyas Mohanty",
+    "Software Engineer",
+    "Full Stack Developer",
+    "Next.js Developer",
+    "React Developer",
+    "TypeScript Developer",
+    "Node.js Developer",
+    "Portfolio",
+    "Web Developer",
+    "Backend Developer",
+  ],
+
+  authors: [{ name: "Shreyas Mohanty" }],
+
+  creator: "Shreyas Mohanty",
+
+  openGraph: {
+    title: "Shreyas Mohanty – Software Engineer Portfolio",
+
+    description:
+      "Portfolio of Shreyas Mohanty, Software Engineer experienced in full-stack development, real-time systems, and scalable applications using modern web technologies.",
+
+    url: "https://shreyas-mohanty-portfolio.vercel.app",
+
+    siteName: "Shreyas Mohanty Portfolio",
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shreyas Mohanty Software Engineer Portfolio",
+      },
+    ],
+
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Shreyas Mohanty – Software Engineer",
+
+    description:
+      "Full-Stack Software Engineer building scalable apps, real-time systems, and modern web platforms.",
+
+    images: ["/og-image.png"],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+  },
+
+  category: "technology",
 };
 
 export default function RootLayout({
