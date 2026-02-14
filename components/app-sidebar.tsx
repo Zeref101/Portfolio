@@ -48,14 +48,13 @@ export default function AppSidebar() {
         <Sidebar
             variant="sidebar"
             className="
-        border-r-0
-        w-full md:w-20
-        h-screen
-        bg-background
-      "
+  border-r-0
+
+"
+
         >
             {/* Logo */}
-            <div className="flex justify-center pt-8">
+            <div className="flex justify-center pt-8 md:bg-background">
                 <Link href="/">
                     <Image
                         src="/no-bg-logo.png"
@@ -73,6 +72,7 @@ export default function AppSidebar() {
           flex
           items-center
           justify-center
+          md:bg-background
 
           /* MOBILE */
           flex-col md:flex-col
@@ -93,27 +93,17 @@ export default function AppSidebar() {
             md:flex-col
             md:h-[50%]
             md:gap-12
+
           "
                 >
                     {links.map((link) => {
                         const active = isActive(link.href);
 
-                        const textClasses = `
-              transition tracking-[0.3em]
+                        const textClasses = `text-sm md:-rotate-90 ${active
+                            ? "text-foreground"
+                            : "text-muted-foreground"
+                            } hover:text-foreground`;
 
-              /* MOBILE */
-              text-sm rotate-0
-
-              /* DESKTOP */
-              md:-rotate-90 md:text-xs
-
-              ${active
-                                ? "text-foreground"
-                                : "text-muted-foreground"
-                            }
-
-              hover:text-foreground
-            `;
 
                         if (link.type === "anchor") {
                             return (
@@ -146,7 +136,7 @@ export default function AppSidebar() {
             </SidebarContent>
 
             {/* Social icons */}
-            <div className="pb-8 flex justify-center">
+            <div className="pb-8 flex justify-center md:bg-background">
                 <div
                     className="
             flex
