@@ -10,6 +10,8 @@ export default function MacbookModel({ screenshot }) {
   const scene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
   const texture = useTexture(screenshot);
 
+  if (!texture) return null;
+
   const group = useRef(null);
   const { mouse } = useThree();
 

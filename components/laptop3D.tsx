@@ -3,6 +3,7 @@
 import { Canvas, useThree } from '@react-three/fiber';
 import { Bounds } from '@react-three/drei';
 import MacbookModel from './MacbookModel';
+import { useEffect } from 'react';
 
 function ResponsiveScene({ screenshot }: { screenshot: string }) {
     const { size } = useThree();
@@ -33,6 +34,9 @@ function ResponsiveScene({ screenshot }: { screenshot: string }) {
 }
 
 export default function Laptop3D({ screenshot }: { screenshot: string }) {
+    useEffect(() => {
+        console.log("laptop rendered")
+    }, [])
     return (
         <div
             className="

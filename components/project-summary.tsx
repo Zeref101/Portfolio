@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Laptop3D from './laptop3D';
+import { useEffect } from 'react';
 
 interface Props {
     title: string;
@@ -16,6 +17,7 @@ export default function ProjectSummary({
     slug,
     screenshot,
 }: Props) {
+
     return (
         <section id='project-1' className="relative min-h-screen w-full text-white px-6 lg:px-24 flex items-center overflow-visible">
             <div className="flex flex-col lg:flex-row gap-16 w-full items-center">

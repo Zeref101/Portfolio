@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import {
     Sidebar,
     SidebarContent,
+    useSidebar
 } from "@/components/ui/sidebar";
 
 const links = [
@@ -16,10 +17,10 @@ const links = [
     { label: "Contact", href: "/contact", type: "route" },
 ];
 
-
 export default function AppSidebar() {
     const pathname = usePathname();
     const [activeHref, setActiveHref] = useState("");
+    const { isMobile, setOpenMobile } = useSidebar();
 
     useEffect(() => {
         const updateActive = () => {
@@ -29,15 +30,32 @@ export default function AppSidebar() {
 
         updateActive();
         window.addEventListener("hashchange", updateActive);
-
         return () => window.removeEventListener("hashchange", updateActive);
     }, [pathname]);
+
+    const handleClick = (href: string) => {
+        setActiveHref(href);
+
+        if (isMobile) {
+            setOpenMobile(false);
+        }
+    };
+
 
     const isActive = (href: string) => activeHref === href;
 
     return (
-        <Sidebar variant="sidebar" className="w-30 border-r-0">
-            <div className="flex justify-center pt-8 bg-background">
+        <Sidebar
+            variant="sidebar"
+            className="
+        border-r-0
+        w-full md:w-20
+        h-screen
+        bg-background
+      "
+        >
+            {/* Logo */}
+            <div className="flex justify-center pt-8">
                 <Link href="/">
                     <Image
                         src="/no-bg-logo.png"
@@ -48,26 +66,61 @@ export default function AppSidebar() {
                 </Link>
             </div>
 
-            <SidebarContent className="flex-1 flex items-center justify-center bg-background ">
-                <nav className="flex flex-col items-center justify-between h-[50%]">
+            {/* Links */}
+            <SidebarContent
+                className="
+          flex-1
+          flex
+          items-center
+          justify-center
+
+          /* MOBILE */
+          flex-col md:flex-col
+        "
+            >
+                <nav
+                    className="
+            flex
+
+            /* MOBILE */
+            flex-col
+            gap-12
+            items-center
+         justify-center
+            flex-wrap
+
+            /* DESKTOP */
+            md:flex-col
+            md:h-[50%]
+            md:gap-12
+          "
+                >
                     {links.map((link) => {
                         const active = isActive(link.href);
 
                         const textClasses = `
-  block -rotate-90 text-xs tracking-[0.3em] transition
-  ${active ? "text-foreground" : "text-muted-foreground"}
-  hover:text-foreground
-`;
+              transition tracking-[0.3em]
 
+              /* MOBILE */
+              text-sm rotate-0
 
+              /* DESKTOP */
+              md:-rotate-90 md:text-xs
+
+              ${active
+                                ? "text-foreground"
+                                : "text-muted-foreground"
+                            }
+
+              hover:text-foreground
+            `;
 
                         if (link.type === "anchor") {
                             return (
                                 <a
                                     key={link.label}
                                     href={link.href}
-                                    onClick={() => setActiveHref(link.href)}
-                                    className="relative group"
+                                    onClick={() => handleClick(link.href)}
                                 >
                                     <span className={textClasses}>
                                         {link.label.toUpperCase()}
@@ -80,8 +133,8 @@ export default function AppSidebar() {
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                onClick={() => setActiveHref(link.href)}
-                                className="relative group"
+                                onClick={() => handleClick(link.href)}
+
                             >
                                 <span className={textClasses}>
                                     {link.label.toUpperCase()}
@@ -92,9 +145,19 @@ export default function AppSidebar() {
                 </nav>
             </SidebarContent>
 
-            {/* Socials */}
-            <div className="pb-8 flex justify-center bg-background">
-                <div className="flex flex-col items-center gap-6">
+            {/* Social icons */}
+            <div className="pb-8 flex justify-center">
+                <div
+                    className="
+            flex
+
+            /* MOBILE */
+            flex-row gap-6
+
+            /* DESKTOP */
+            md:flex-col
+          "
+                >
                     {[
                         {
                             src: "/logos/linkedin.webp",
@@ -112,16 +175,11 @@ export default function AppSidebar() {
                             link: "https://github.com/Zeref101",
                         },
                     ].map((icon) => (
-                        <Link
-                            key={icon.alt}
-                            href={icon.link}
-                            className="w-8 h-8 flex items-center justify-center rounded-full
-                         text-muted-foreground hover:text-foreground transition"
-                        >
+                        <Link key={icon.alt} href={icon.link}>
                             <img
                                 src={icon.src}
                                 alt={icon.alt}
-                                className="opacity-70 hover:opacity-100 transition w-5 h-5"
+                                className="w-5 h-5 opacity-70 hover:opacity-100 transition"
                             />
                         </Link>
                     ))}
