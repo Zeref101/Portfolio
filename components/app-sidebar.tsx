@@ -15,7 +15,9 @@ const links = [
     { label: "Details", href: "/home#details", type: "anchor" },
     { label: "Skills", href: "/skills", type: "route" },
     { label: "Contact", href: "/contact", type: "route" },
+    { label: "Resume", href: "/resume-feb-2026.pdf", type: "download" },
 ];
+
 
 export default function AppSidebar() {
     const pathname = usePathname();
@@ -111,6 +113,20 @@ export default function AppSidebar() {
                                     key={link.label}
                                     href={link.href}
                                     onClick={() => handleClick(link.href)}
+                                >
+                                    <span className={textClasses}>
+                                        {link.label.toUpperCase()}
+                                    </span>
+                                </a>
+                            );
+                        }
+                        if (link.type === "download") {
+                            return (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    download
+                                    className="cursor-pointer"
                                 >
                                     <span className={textClasses}>
                                         {link.label.toUpperCase()}
